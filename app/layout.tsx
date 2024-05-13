@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Urbanist } from "next/font/google";
-import TitleBar from "./components/title_bar";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import { Footer } from "./components/footer";
+import NavBar from "./components/nav_bar";
 
-const urbanist = Urbanist({ subsets: ["latin"] });
+const manrope = Manrope({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Media Match",
@@ -18,9 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={urbanist.className}>
+      <body className={manrope.className}>
         <div className="title-bar">
-          <TitleBar />
+          <NavBar />
         </div>
         <div style={{ paddingTop: '50px' }}> {/* Adjust this value based on the height of your TitleBar */}
           {children}
