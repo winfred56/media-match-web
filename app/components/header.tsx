@@ -1,4 +1,5 @@
 import MediaUpload from "@/app/components/upload_button";
+import AvatarUploadPage from "@/app/components/upload_button";
 
 export default function Header() {
 
@@ -16,7 +17,7 @@ export default function Header() {
                 <div className={`w-96 mb-12 mt-60`}>
                     <div
                         className={`h-96 p-4 mb-4 drop-shadow-2xl bg-white border-0 rounded-3xl flex flex-col items-center justify-center`}>
-                        <MediaUpload/>
+                        <AvatarUploadPage/>
                         <button className={`rounded-3xl bg-blue-700 px-6 py-3 font-bold text-white my-8`}>Upload media
                         </button>
                         <p className={`text-xs text-slate-700`}>You can only upload video and audio files</p>
