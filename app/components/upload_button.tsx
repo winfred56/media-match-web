@@ -44,16 +44,16 @@ const MediaUpload = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form className={`flex flex-col items-center justify-center`} onSubmit={handleSubmit}>
                 <input
                     type="file"
-                    accept="video/*"
+                    accept="audio/* video/*"
                     name="file"
                     onChange={handleFileChange}
                     ref={inputFileRef}
                 />
-                <button type={'submit'}>
-                    {loading ? 'Uploading...' : 'Upload'}
+                <button type={'submit'} className={`rounded-3xl bg-blue-700 px-6 py-3 font-bold text-white my-8`}>
+                    {loading ? 'Uploading...' : 'Upload media'}
                 </button>
             </form>
             {error && <div>Error: {error}</div>}
