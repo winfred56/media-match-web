@@ -4,40 +4,40 @@ import Link from "next/link";
 
 export function Footer(){
     return (
-        <div className="w-screen px-5 md:px-24 py-10 text-black">
+        <div className="w-screen px-5 md:px-24 py-10 text-text_color">
             <div className="md:flex justify-between">
                 <div>
                     <div className="flex items-end">
-                        <button className="transition ease-in-out didact-gothic-regular text-2xl hover:text-sky-500">media match</button>
+                        <Link href="#"><h2 className="link text-4xl">Media Match</h2></Link>
                         <div className="mx-2" />
-                        <p className="text-sm text-slate-700 align-self-right r-0 mb-1">(1.0.0)</p>
+                        <p className="text-xs">(1.0.0)</p>
                     </div>
                     <div className="my-2" />
-                    <p className="text-sm text-slate-700">A platform for matching snippets of media content with the actual media.</p>
+                    <p className="text-sm">A platform for matching snippets of media content with the actual media.</p>
                 </div>
                 <div className="m-10" />
                 <div className="md:flex">
                     <div>
-                        <h2>Privacy & Policies</h2>
+                        <h2 className={`text-xl`}>Privacy & Policies</h2>
                         <div className="my-2" />
-                        <p><Link href="#"  className="transition ease-in-out hover:text-sky-500 active:scale-[0.95] text-sm text-slate-700">Terms & Conditions</Link></p>
-                        <p><Link href="#"  className="transition ease-in-out hover:text-sky-500 active:scale-[0.95] text-sm text-slate-700">Careers</Link></p>
+                        <p><Link href="#"  className="link">Terms & Conditions</Link></p>
+                        <p><Link href="#"  className="link">Careers</Link></p>
                     </div>
                     <div className="m-5" />
                     <div>
-                        <h2>Company</h2>
+                        <h2 className={`text-xl`}>Company</h2>
                         <div className="m-2" />
-                        <p><Link href="#"  className="transition ease-in-out hover:text-sky-500 active:scale-[0.95] text-sm text-slate-700">About us</Link></p>
-                        <p><Link href="#"  className="transition ease-in-out hover:text-sky-500 active:scale-[0.95] text-sm text-slate-700">Careers</Link></p>
-                        <p><Link href="#"  className="transition ease-in-out hover:text-sky-500 active:scale-[0.95] text-sm text-slate-700">FAQs</Link></p>
+                        <p><Link href="#"  className="link">About us</Link></p>
+                        <p><Link href="#"  className="link">Careers</Link></p>
+                        <p><Link href="#"  className="link">FAQs</Link></p>
                     </div>
                     <div className="m-5" />
                     <div>
-                        <h2>Services</h2>
+                        <h2 className={`text-xl`}>Services</h2>
                         <div className="my-2" />
-                        <p><Link href="#"  className="transition ease-in-out hover:text-sky-500 active:scale-[0.95] text-sm text-slate-700">Courses</Link></p>
-                        <p><Link href="#"  className="transition ease-in-out hover:text-sky-500 active:scale-[0.95] text-sm text-slate-700">Part time jobs</Link></p>
-                        <p><Link href="#"  className="transition ease-in-out hover:text-sky-500 active:scale-[0.95] text-sm text-slate-700">Accommodation</Link></p>
+                        <p><Link href="#"  className="link">Courses</Link></p>
+                        <p><Link href="#"  className="link">Part time jobs</Link></p>
+                        <p><Link href="#"  className="link">Accommodation</Link></p>
                     </div>
                 </div>
             </div>
@@ -68,7 +68,6 @@ export function Footer(){
                     <div className="mx-1" />
                 </div>
             </div>
-            <div className="my-5" />
         </div>
     )
 }

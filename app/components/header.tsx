@@ -103,7 +103,7 @@ export default function Header() {
                 <span id={`typewriter-cursor`}>|</span>
             </h1>
 
-            <h5 className={`flex items-center text-center text-lg relative my-1 xl:w-2/4 px-8`}>
+            <h5 className={`flex items-center text-center text-lg font-normal relative my-1 xl:w-2/4 px-8`}>
                 We transform your video, song, or movie into a unique digital fingerprint with a distinct hash, enabling
                 seamless recognition and matching for others.
                 {/*<br/>Automatic and 100% free*/}

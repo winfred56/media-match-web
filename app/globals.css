@@ -34,7 +34,7 @@ body {
 }
 
 h1,h2,h3,h4,h5,h6 {
-  @apply text-white
+  @apply text-white font-extrabold
 }
 
 @layer utilities {
@@ -68,34 +68,8 @@ form{
   line-height: 1.5rem;
 }
 
-.didact-gothic-regular {
-  font-family: "Didact Gothic", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-iconify-icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-}
-
-#typewriter {
-  /*font-style: italic;*/
-  @apply underline underline-offset-4 italic
-}
-
-#typewriter-cursor{
-  animation: blink 1s linear infinite;
-}
-
-@keyframes blink {
-  0%{
-    opacity: 100%;
-  }
-  50%{
-    opacity: 0;
-  }
+.link{
+  @apply cursor-pointer hover:text-secondary transition ease-out
 }
 
 .grid-container {
@@ -153,6 +127,25 @@ iconify-icon {
   filter: invert(1);
 }
 
+
+#typewriter {
+  /*font-style: italic;*/
+  @apply underline underline-offset-4 italic
+}
+
+#typewriter-cursor{
+  animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+  0%{
+    opacity: 100%;
+  }
+  50%{
+    opacity: 0;
+  }
+}
+
 @keyframes carousel {
   0% {
     transform: translateX(-50%) translateZ(0);
@@ -164,8 +157,17 @@ iconify-icon {
 
 
 
+.didact-gothic-regular {
+  font-family: "Didact Gothic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
-
+.iconify-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+}
 
 .ic--round-person {
   display: inline-block;
