@@ -1,33 +1,38 @@
 import { IoMenu } from "react-icons/io5";
 import { LuUpload } from "react-icons/lu";
+import mediaMatch from "./../../public/media match logo.svg";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function NavBar(){
+    const links = [
+        {"link_name": "Upload media", "href": "#"},
+        {"link_name": "Download app", "href": "#"},
+        {"link_name": "Tools & API", "href": "#"},
+        {"link_name": "Pricing", "href": "#"},
+    ];
     return (
-        <div className="backdrop-blur-md text-black mt-4 flex flex-col items-center justify-center">
-            <div className="opacity-80 backdrop-blur-md">
-                <div className="justify-center hidden md:flex">
-                    <div className="flex items-center flex-row justify-start py-4 content-center">
-                        <div className="flex flex-row gap-3 justify-start">
-                            <button className="flex-none transition ease-in-out didact-gothic-regular text-2xl hover:text-sky-500 mr-[32rem]">media match</button>
-                            <button className="transition ease-in-out hover:text-sky-500 active:scale-[0.95]">Download app</button>
-                            <button className="transition ease-in-out hover:text-sky-500 active:scale-[0.95]">How to use</button>
-                            <button className="transition ease-in-out hover:text-sky-500 active:scale-[0.95]">Tools & API</button>
-                            <button className="transition ease-in-out hover:text-sky-500 active:scale-[0.95]">Pricing</button>
-                            <div  className="p-2 border hover:border-black transition ease-linear rounded-md border-slate-800 items-center justify-center flex flex-row">
-                                Press <span className={`mx-1 py-1 px-2 bg-gray-400 rounded-sm font-extrabold`}>B</span> to Upload
-                            </div>
-                        </div>
-                    </div>
+        <div className={`sticky top-0 z-20 backdrop-blur-lg opacity-95 px-6 md:px-10 py-3 drop-shadow-sm`}>
+            <div className={`flex flex-row items-center justify-between`}>
+                <div className={`flex flex-row gap-10 items-center`}>
+                    <Link className={`flex flex-row gap-4 items-center`} href={`#`}>
+                        <Image src={mediaMatch} className={`w-8 md:w-10 lg:w-12`} alt={`logo`} decoding={`async`} loading={`eager`}/>
+                        <h1 className={`text-2xl font-extrabold`}>Media Match</h1>
+                    </Link>
+
+                    <ul className={`hidden lg:flex flex-row gap-6 items-center font-medium`}>
+                        {links.map((link) => (
+                            <li className={`hover:text-secondary cursor-pointer`} key={link.link_name}><Link href={link.href}>{link.link_name}</Link></li>
+                        ))}
+                    </ul>
                 </div>
-                <div className="w-screen flex p-4 md:hidden">
-                    <div className="flex justify-between w-full items-center content-center">
-                            <IoMenu size={25} className="transition ease-in-out hover:text-sky-500 active:scale-[0.95]" />
-                            <button className="transition ease-in-out didact-gothic-regular text-xl hover:text-sky-500">media match</button>
-                            <button className="transition ease-in-out text-sm hover:text-sky-500 active:scale-[0.95]">
-                                <LuUpload size={20}/>
-                            </button>
-                    </div>
+                <div  className="hidden lg:flex flex-row p-2 border transition ease-linear rounded-md border-slate-400 items-center justify-center">
+                                Press <span className={`mx-1 py-1 px-2 bg-gray-200 text-black rounded-sm font-extrabold`}>B</span> to Upload
                 </div>
+                <div className={`lg:hidden`}>
+                    <IoMenu size={34}/>
+                </div>
+
             </div>
         </div>
     )
