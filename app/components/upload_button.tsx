@@ -51,19 +51,19 @@ const MediaUpload = () => {
 
     return (
         <>
-            <form className={`h-72`} action={``} onSubmit={handleSubmit} >
-                <input className={`flex flex-row items-center justify-center cursor-pointer`}
+            <form action={``} className={`flex flex-col items-center justify-center`} onSubmit={handleSubmit} >
+                <input className={`flex flex-row items-center justify-center cursor-pointer mt-12 lg:mt-14 xl:mt-16`}
                     type="file"
                     accept="audio/* video/*"
                     name="file"
                     onChange={handleFileChange}
                     ref={inputFileRef}
                 />
-                <button type={'submit'} className={`input-field rounded-3xl bg-blue-700 px-6 py-3 font-bold text-white my-8`}>
+                <button type={'submit'} className={`cta-btn btn`}>
                     {loading ? 'Uploading...' : 'Upload media'}
                 </button>
             </form>
-            {error && <div>Error: {error}</div>}
+            {error && <div className={``}> Error: {error}</div>}
         </>
     );
 };

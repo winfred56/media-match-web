@@ -49,9 +49,9 @@ main {
   overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
-form{
-  @apply flex flex-col justify-center items-center border-dashed border-2 cursor-pointer rounded-md mb-2;
-}
+/*form{*/
+/*  @apply flex flex-col justify-center items-center border-dashed border-2 cursor-pointer rounded-md mb-2;*/
+/*}*/
 
 .title-bar {
   position: fixed;

@@ -108,10 +108,11 @@ export default function Header() {
                 seamless recognition and matching for others.
                 {/*<br/>Automatic and 100% free*/}
             </h5>
-            <button
-                className={`cta-btn btn`}>
-                Upload media
-            </button>
+            {/*<button*/}
+            {/*    className={`cta-btn btn`}>*/}
+            {/*    Upload media*/}
+            {/*</button>*/}
+            <MediaUpload />
 
             <p className={`my-1 text-sm flex text-center items-center justify-center`}>Unlock Instant Recognition with Our Video and Audio Hashing!</p>
             {/*<MediaUpload/>*/}
@@ -121,7 +122,7 @@ export default function Header() {
                     <div className="carousel-container-clients carousel-fade-clients">
                         <div className="carousel-clients space-x-7 ">
                             {tools.map((tool, index) => (
-                                <Image width={300} height={300} className={`w-full h-full invert-effect`} key={index} src={tool.src} alt={`tool logo`}/>
+                                <Image width={500} height={500} className={`w-full h-full invert-effect`} key={index} src={tool.src} alt={`tool logo`}/>
                             ))}
                         </div>
                     </div>
