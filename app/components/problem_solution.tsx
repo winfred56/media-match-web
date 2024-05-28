@@ -1,4 +1,6 @@
-import {motion} from "framer-motion";
+"use client"
+import {motion, useScroll, useTransform} from "framer-motion";
+import {useRef} from "react";
 
 const splitLetters = (input: string) => {
     const letters: string[] = [];
@@ -17,9 +19,16 @@ export default function ProblemSolution() {
         hidden: {opacity: 0},
         reveal: {opacity: 1},
     }
+    const ref = useRef<HTMLElement>(null);
+    const {scrollYProgress} = useScroll({
+        offset: ["0 1", "1.33 1"],
+        target: ref,
+    })
+    const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1])
+    const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1])
     return (
         <>
-            <div className={`w-[90%] lg:w-[80%] xl:w-[60%] xl:h-screen`}>
+            <motion.section ref={ref} style={{scale: scaleProgress, opacity:opacityProgress}} className={`w-[90%] lg:w-[80%] xl:w-[60%] xl:h-screen`}>
                 <h2 className={`text-center flex items-center justify-center font-extrabold text-2xl xl:text-5xl`}>
                     Struggling to identify that movie you saw on social media, or the song you heard?
                 </h2>
@@ -109,7 +118,7 @@ export default function ProblemSolution() {
                     Upload your videos and songs to our database, where they are transformed into unique digital
                     fingerprints. These fingerprints allow anyone to easily identify and match media through the Media
                     Match app, making media recognition seamless and instant.</p>
-            </div>
+            </motion.section>
         </>
     )
 }
