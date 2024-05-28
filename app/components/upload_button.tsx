@@ -1,5 +1,29 @@
 'use client'
 import React, {useRef, useState} from 'react';
+import {toast} from "sonner";
+
+const Modal = ({isVisible, onClose, message}: {
+    isVisible: boolean,
+    onClose: () => void,
+    message: string,
+
+}) => {
+    if (!isVisible) return null;
+    return (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <div className="bg-white p-6 rounded-lg shadow-lg">
+                <h2 className="text-2xl font-bold mb-4">Success</h2>
+                <p>{message}</p>
+                <button
+                    className="mt-4 btn cta-btn"
+                    onClick={onClose}
+                >
+                    Close
+                </button>
+            </div>
+        </div>
+    );
+};
 
 const MediaUpload = () => {
     const [file, setFile] = useState<File | null>(null);
@@ -7,6 +31,7 @@ const MediaUpload = () => {
     const [error, setError] = useState<string>('');
     const [progress, setProgress] = useState<number>(0);
     const [abortController, setAbortController] = useState<AbortController | null>(null);
+    const [modalVisible, setModalVisible] = useState<boolean>(false);
     const inputFileRef = useRef<HTMLInputElement>(null);
 
     const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,13 +48,11 @@ const MediaUpload = () => {
         setProgress(0);
         const controller = new AbortController();
         setAbortController(controller);
-
         if (!selectedFile && !file) {
             setError('Please select a file.');
             setLoading(false);
             return;
         }
-
         try {
             const formData = new FormData();
             formData.append('file', selectedFile || file as File);
@@ -44,10 +67,13 @@ const MediaUpload = () => {
             };
             xhr.onload = () => {
                 if (xhr.status === 200) {
+                    setModalVisible(true);
                     setFile(null);
                     setError('');
                     setLoading(false);
-                    window.location.reload();
+                    setProgress(0);
+                    setAbortController(null);
+                    abortController?.abort();
                 } else {
                     throw new Error('Failed to upload file.');
                 }
@@ -55,16 +81,19 @@ const MediaUpload = () => {
             xhr.onerror = () => {
                 setError('Failed to upload file.');
                 setLoading(false);
+                toast.error('Failed to upload file.');
             };
             xhr.onabort = () => {
                 setError('Upload cancelled.');
                 setLoading(false);
+                toast.error('Upload cancelled.');
             };
 
             xhr.send(formData);
         } catch (error: any) {
             setError(error.toString());
             setLoading(false);
+            toast.error('An error occurred. Please try again.');
         }
     };
 
@@ -79,6 +108,7 @@ const MediaUpload = () => {
             abortController.abort();
             setAbortController(null);
             setLoading(false);
+            window.location.reload();
         }
     };
 
@@ -107,10 +137,10 @@ const MediaUpload = () => {
                         <div className={`relative pt-1`}>
                             <div className={`flex mb-2 items-center justify-between`}>
                                 <div>
-                                            <span
-                                                className={`text-xs font-semibold inline-block py-1 px-4 uppercase rounded-full text-blue-600 bg-blue-200`}>
-                                                Uploading {progress}%
-                                            </span>
+                                    <span
+                                        className={`text-xs font-semibold inline-block py-1 px-4 uppercase rounded-full text-blue-600 bg-blue-200`}>
+                                        Uploading {progress}%
+                                    </span>
                                 </div>
                             </div>
                             <div className={`overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200`}>
@@ -136,9 +166,16 @@ const MediaUpload = () => {
                 )}
                 <p className={`text-xs text-slate-700`}>You can only upload video and audio files</p>
             </div>
-</>
-)
-    ;
+            <Modal
+                isVisible={modalVisible}
+                onClose={() => {
+                    setModalVisible(false);
+                    window.location.reload();
+                }}
+                message="File uploaded successfully!"
+            />
+        </>
+    );
 };
 
 export default MediaUpload;

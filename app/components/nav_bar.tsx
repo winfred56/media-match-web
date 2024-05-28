@@ -26,7 +26,7 @@ export default function NavBar(){
                         ))}
                     </ul>
                 </div>
-                <div  className="hidden lg:flex flex-row p-2 border transition ease-linear rounded-md border-slate-400 items-center justify-center">
+                <div  className="hidden lg:flex flex-row p-2 border transition ease-linear rounded-md border-[#4B4B4B] items-center justify-center">
                                 Press <span className={`mx-1 py-1 px-2 bg-gray-200 text-black rounded-sm font-extrabold`}>B</span> to Upload
                 </div>
                 <div className={`lg:hidden`}>
