@@ -78,6 +78,7 @@ const MediaUpload = () => {
             };
             xhr.onload = () => {
                 if (xhr.status === 200) {
+                    console.log(xhr.response);
                     setModalVisible(true);
                     setFile(null);
                     setError('');
@@ -175,7 +176,7 @@ const MediaUpload = () => {
                         {loading ? 'Uploading...' : 'Upload'}
                     </button>
                 )}
-                <p className={`text-xs text-slate-700`}>You can only upload video and audio files</p>
+                <p className={`text-xs text-[#7B7B7B]`}>You can only upload video and audio files</p>
             </div>
             <Modal
                 isVisible={modalVisible}
