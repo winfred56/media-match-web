@@ -10,16 +10,27 @@ const Modal = ({isVisible, onClose, message}: {
 }) => {
     if (!isVisible) return null;
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h2 className="text-2xl font-bold mb-4">Success</h2>
-                <p>{message}</p>
-                <button
-                    className="mt-4 btn cta-btn"
-                    onClick={onClose}
-                >
-                    Close
-                </button>
+        <div
+            className="fixed inset-0 flex items-center justify-center text-black bg-opacity-50 bg-black overflow-y-auto h-full w-full">
+            <div className="bg-white p-6 rounded-lg shadow-lg mx-auto border w-96">
+                <div className="mt-3 text-center">
+                    <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-purple-100">
+                        <svg className="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                    </div>
+                    <h2 className="text-lg md:text-xl mt-2 text-black leading-6 font-medium mb-4">Success</h2>
+                </div>
+                <p className={`text-center`}>{message}</p>
+                <div className="text-xs md:text-sm items-center px-4 py-3">
+                    <button id="ok-btn" onClick={onClose} className="mt-4 px-4 py-2 bg-primary cta-btn text-white
+                            text-base font-medium rounded-md w-full
+                            shadow-sm hover:bg-primary focus:outline-none focus:ring-2 focus:ring-primary">
+                        OK
+                    </button>
+
+                </div>
             </div>
         </div>
     );
@@ -172,7 +183,7 @@ const MediaUpload = () => {
                     setModalVisible(false);
                     window.location.reload();
                 }}
-                message="File uploaded successfully!"
+                message="Media file uploaded successfully to our database! People can now easily match this file"
             />
         </>
     );
