@@ -24,6 +24,10 @@ const MediaUpload: React.FC = () => {
     // Ref to access the file input element
     const inputFileRef = useRef<HTMLInputElement>(null);
 
+    //
+    const [isDragging, setIsDragging] = useState<boolean>(false);
+
+
     // useEffect hook to add a keydown event listener on letter B
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
@@ -133,11 +137,36 @@ const MediaUpload: React.FC = () => {
         }
     };
 
+    const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+        event.preventDefault();
+        setIsDragging(true);
+    };
+
+    const handleDragLeave = () => {
+        setIsDragging(false);
+    };
+
+    // Function to Handle file drop
+    const handleDrop = async (event: React.DragEvent<HTMLDivElement>) => {
+        event.preventDefault();
+        setIsDragging(false);
+
+        const selectedFile = event.dataTransfer.files?.[0];
+        if (selectedFile) {
+            setFile(selectedFile);
+            await handleSubmit(selectedFile);
+        }
+    };
+
+
     return (
         <>
             <div
                 className="h-fit w-fit xl:px-32 xl:py-6 p-4 mb-4 drop-shadow-2xl bg-transparent border-2 border-dashed border-[#4B4B4B] rounded-3xl flex flex-col items-center justify-center"
                 onClick={handleCardClick}
+                onDragOver={handleDragOver}
+                onDragLeave={handleDragLeave}
+                onDrop={handleDrop}
                 style={{cursor: 'pointer'}}
             >
                 <div>
