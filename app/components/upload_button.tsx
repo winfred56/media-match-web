@@ -1,120 +1,129 @@
-'use client'
-import React, {useRef, useState} from 'react';
-import {toast} from "sonner";
+import React, {useEffect, useRef, useState} from 'react';
+import {toast} from 'sonner';
+import Modal from "@/app/components/modal";
 
-const Modal = ({isVisible, onClose, message}: {
-    isVisible: boolean,
-    onClose: () => void,
-    message: string,
-
-}) => {
-    if (!isVisible) return null;
-    return (
-        <div
-            className="fixed inset-0 flex items-center justify-center text-black bg-opacity-50 bg-black overflow-y-auto h-full w-full">
-            <div className="bg-white p-6 rounded-lg shadow-lg mx-auto border w-96">
-                <div className="mt-3 text-center">
-                    <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-purple-100">
-                        <svg className="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7">
-                            </path>
-                        </svg>
-                    </div>
-                    <h2 className="text-lg md:text-xl mt-2 text-black leading-6 font-medium mb-4">Success</h2>
-                </div>
-                <p className={`text-center`}>{message}</p>
-                <div className="text-xs md:text-sm items-center px-4 py-3">
-                    <button id="ok-btn" onClick={onClose} className="mt-4 px-4 py-2 bg-primary cta-btn text-white
-                            text-base font-medium rounded-md w-full
-                            shadow-sm hover:bg-primary focus:outline-none focus:ring-2 focus:ring-primary">
-                        OK
-                    </button>
-
-                </div>
-            </div>
-        </div>
-    );
-};
-
-const MediaUpload = () => {
+const MediaUpload: React.FC = () => {
+    // State to store the selected file
     const [file, setFile] = useState<File | null>(null);
+
+    // State to track the loading status
     const [loading, setLoading] = useState<boolean>(false);
+
+    // State to store any error messages
     const [error, setError] = useState<string>('');
+
+    // State to track the upload progress
     const [progress, setProgress] = useState<number>(0);
+
+    // State to store the AbortController for cancelling the upload
     const [abortController, setAbortController] = useState<AbortController | null>(null);
+
+    // State to control the visibility of the modal
     const [modalVisible, setModalVisible] = useState<boolean>(false);
+
+    // Ref to access the file input element
     const inputFileRef = useRef<HTMLInputElement>(null);
 
+    // useEffect hook to add a keydown event listener on letter B
+    useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            // Check if the 'B' key is pressed
+            if (event.key.toLowerCase() === 'b') {
+                // Simulate a click on the file input element
+                inputFileRef.current?.click();
+            }
+        };
+
+        // Add event listener for 'keydown'
+        window.addEventListener('keydown', handleKeyDown);
+
+        // Cleanup the event listener on component unmount
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []);
+
+    // Handler for file input change event
     const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFile = event.target.files?.[0];
-        console.log(selectedFile);
         if (selectedFile) {
+            // Set the selected file and start the upload process
             setFile(selectedFile);
-            await handleSubmit(selectedFile);  // Start upload immediately after file is selected
+            await handleSubmit(selectedFile);
         }
     };
 
+    // Handler for file upload submission
     const handleSubmit = async (selectedFile?: File) => {
+        // Set loading state and initialize progress
         setLoading(true);
         setProgress(0);
         const controller = new AbortController();
         setAbortController(controller);
+
+        // Check if a file is selected
         if (!selectedFile && !file) {
             setError('Please select a file.');
             setLoading(false);
             return;
         }
+
         try {
             const formData = new FormData();
-            formData.append('file', selectedFile || file as File);
+            formData.append('file', selectedFile || (file as File));
 
+            // Create a new XMLHttpRequest for file upload
             const xhr = new XMLHttpRequest();
             xhr.open('POST', 'https://media-match-backend.onrender.com/add/');
+
+            // Track the upload progress
             xhr.upload.onprogress = (event) => {
                 if (event.lengthComputable) {
                     const percentCompleted = Math.round((event.loaded * 100) / event.total);
                     setProgress(percentCompleted);
                 }
             };
+
+            // Handle successful upload response
             xhr.onload = () => {
                 if (xhr.status === 200) {
-                    console.log(xhr.response);
                     setModalVisible(true);
                     setFile(null);
                     setError('');
-                    setLoading(false);
-                    setProgress(0);
-                    setAbortController(null);
-                    abortController?.abort();
                 } else {
-                    throw new Error('Failed to upload file.');
+                    handleError('Failed to upload file.');
                 }
-            };
-            xhr.onerror = () => {
-                setError('Failed to upload file.');
                 setLoading(false);
-                toast.error('Failed to upload file.');
-            };
-            xhr.onabort = () => {
-                setError('Upload cancelled.');
-                setLoading(false);
-                toast.error('Upload cancelled.');
+                setProgress(0);
+                setAbortController(null);
             };
 
+            // Handle upload error
+            xhr.onerror = () => handleError('Failed to upload file.');
+
+            // Handle upload cancellation
+            xhr.onabort = () => handleError('Upload cancelled.');
+
+            // Send the form data
             xhr.send(formData);
         } catch (error: any) {
-            setError(error.toString());
-            setLoading(false);
-            toast.error('An error occurred. Please try again.');
+            handleError('An error occurred. Please try again.');
         }
     };
 
+    // Function to handle errors
+    const handleError = (message: string) => {
+        setError(message);
+        setLoading(false);
+        toast.error(message);
+    };
+
+    // Handler for card click event to trigger file input click
     const handleCardClick = () => {
-        if (inputFileRef.current) {
-            inputFileRef.current.click();
-        }
+        inputFileRef.current?.click();
     };
 
+    // Handler to cancel the ongoing upload
     const handleCancelUpload = () => {
         if (abortController) {
             abortController.abort();
@@ -127,7 +136,7 @@ const MediaUpload = () => {
     return (
         <>
             <div
-                className={`h-fit w-fit xl:px-32 xl:py-6 p-4 mb-4 drop-shadow-2xl bg-transparent border-2 border-dashed border-[#4B4B4B] rounded-3xl flex flex-col items-center justify-center`}
+                className="h-fit w-fit xl:px-32 xl:py-6 p-4 mb-4 drop-shadow-2xl bg-transparent border-2 border-dashed border-[#4B4B4B] rounded-3xl flex flex-col items-center justify-center"
                 onClick={handleCardClick}
                 style={{cursor: 'pointer'}}
             >
@@ -142,25 +151,27 @@ const MediaUpload = () => {
                             style={{display: 'none'}}
                         />
                     </form>
-                    {error && <div className={`text-red-500 mt-2`}>Error: {error}</div>}
+                    {error && <div className="text-red-500 mt-2">Error: {error}</div>}
                 </div>
                 {loading ? (
-                    <div className={`w-full mt-4`}>
-                        <div className={`relative pt-1`}>
-                            <div className={`flex mb-2 items-center justify-between`}>
+                    <div className="w-full mt-4">
+                        <div className="relative pt-1">
+                            <div className="flex mb-2 items-center justify-between">
                                 <div>
-                                    <span
-                                        className={`text-xs font-semibold inline-block py-1 px-4 uppercase rounded-full text-blue-600 bg-blue-200`}>
-                                        Uploading {progress}%
-                                    </span>
+                  <span
+                      className="text-xs font-semibold inline-block py-1 px-4 uppercase rounded-full text-blue-600 bg-blue-200">
+                    Uploading {progress}%
+                  </span>
                                 </div>
                             </div>
-                            <div className={`overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200`}>
-                                <div style={{width: `${progress}%`}}
-                                     className={`shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600`}></div>
+                            <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
+                                <div
+                                    style={{width: `${progress}%`}}
+                                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600"
+                                ></div>
                             </div>
                             <button
-                                className={`rounded-3xl text-xs bg-red-700 px-4 py-3 btn cta-btn text-center`}
+                                className="rounded-3xl text-xs bg-red-700 px-4 py-3 btn cta-btn text-center"
                                 onClick={handleCancelUpload}
                             >
                                 Cancel Upload
@@ -169,14 +180,14 @@ const MediaUpload = () => {
                     </div>
                 ) : (
                     <button
-                        className={`cta-btn btn`}
+                        className="cta-btn btn"
                         onClick={() => file && handleSubmit(file)}
                         disabled={loading}
                     >
                         {loading ? 'Uploading...' : 'Upload'}
                     </button>
                 )}
-                <p className={`text-xs text-[#7B7B7B]`}>You can only upload video and audio files</p>
+                <p className="text-xs text-[#7B7B7B]">You can only upload video and audio files</p>
             </div>
             <Modal
                 isVisible={modalVisible}

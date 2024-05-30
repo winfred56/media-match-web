@@ -130,7 +130,7 @@ main {
 
 #typewriter {
   /*font-style: italic;*/
-  @apply underline underline-offset-4 italic
+  @apply underline underline-offset-4
 }
 
 #typewriter-cursor{
