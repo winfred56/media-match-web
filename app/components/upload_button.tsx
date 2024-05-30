@@ -21,11 +21,11 @@ const MediaUpload: React.FC = () => {
     // State to control the visibility of the modal
     const [modalVisible, setModalVisible] = useState<boolean>(false);
 
+    // State to control dragging and dropping
+    const [isDragging, setIsDragging] = useState<boolean>(false);
+
     // Ref to access the file input element
     const inputFileRef = useRef<HTMLInputElement>(null);
-
-    //
-    const [isDragging, setIsDragging] = useState<boolean>(false);
 
 
     // useEffect hook to add a keydown event listener on letter B
