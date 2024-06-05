@@ -1,7 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {toast} from 'sonner';
 import Modal from "@/app/components/modal";
-
 const MediaUpload: React.FC = () => {
     // State to store the selected file
     const [file, setFile] = useState<File | null>(null);
@@ -162,7 +161,7 @@ const MediaUpload: React.FC = () => {
     return (
         <>
             <div
-                className="h-fit w-fit xl:px-32 xl:py-6 p-4 mb-4 drop-shadow-2xl bg-transparent border-2 border-dashed border-[#4B4B4B] rounded-3xl flex flex-col items-center justify-center"
+                className="mb-4 drop-shadow-2xl bg-transparent rounded-3xl flex flex-col items-center justify-center"
                 onClick={handleCardClick}
                 onDragOver={handleDragOver}
                 onDragLeave={handleDragLeave}

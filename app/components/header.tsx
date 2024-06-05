@@ -97,7 +97,7 @@ export default function Header() {
 
     return (
         <div
-            className={`flex flex-col text-text_color items-center justify-center w-full mt-0 overflow-hidden xl:h-screen`}>
+            className={`flex flex-col text-text_color items-center justify-center w-full mt-0 xl:pt-40 xl:pb-48 overflow-hidden `}>
             <h1 className={`text-4xl xl:text-8xl text-center font-extrabold pb-6 xl:-mt-20`}>
                 Effortlessly Identify Any <br className={`hidden xl:flex`}/>
                 <span id={`typewriter`}></span>
