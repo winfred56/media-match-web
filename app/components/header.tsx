@@ -113,7 +113,7 @@ export default function Header() {
             <MediaUpload />
 
 
-            <p className={`my-1 text-sm flex text-center items-center justify-center`}>Unlock Instant Recognition with Our Video and Audio Hashing!</p>
+            {/*<p className={`my-1 text-sm flex text-center items-center justify-center`}>Unlock Instant Recognition with Our Video and Audio Hashing!</p>*/}
 
             <div className="mt-8 lg:pt-4 flex flex-col items-center justify-center space-y-6 mb-20 xl:mb-0 -z-10">
                 <div className="container max-w-[800px] flex flex-wrap justify-center items-center">
