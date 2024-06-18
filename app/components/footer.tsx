@@ -1,73 +1,109 @@
-import { FaLinkedin, FaRegCopyright } from "react-icons/fa";
-import { FaSquareInstagram, FaSquareXTwitter, FaSquareYoutube } from "react-icons/fa6";
-import Link from "next/link";
+import Link from 'next/link';
 
-export function Footer(){
+export default function Footer(){
+    const linkStyle = `cursor-pointer text-[#9597a6] hover:text-white transition ease-out`;
+
+    const footerSections = [
+        {
+            title: "Topics",
+            links: [
+                { label: "Research methods", href: "#" },
+                { label: "User experience (UX)", href: "#" },
+                { label: "Market research", href: "#" },
+                { label: "Surveys", href: "#" },
+                { label: "Product development", href: "#" }
+            ]
+        },
+        {
+            title: "Solutions",
+            links: [
+                { label: "Video fingerprints", href: "#" },
+                { label: "Audio fingerprints (UX)", href: "#" },
+                { label: "UX research platform", href: "#" },
+                { label: "Channels", href: "#" },
+                { label: "Sample Rates", href: "#" },
+                { label: "Dimensionality reduction", href: "#" },
+                { label: "Feature extraction", href: "#" }
+            ]
+        },
+        {
+            title: "Product",
+            links: [
+                { label: "Slack community", href: "#" },
+                { label: "Twitter", href: "#" },
+                { label: "Github", href: "#" }
+            ]
+        },
+        {
+            title: "Community",
+            links: [
+                { label: "Slack community", href: "#" },
+                { label: "Twitter", href: "#" },
+                { label: "Github", href: "#" }
+            ]
+        },
+        {
+            title: "Company",
+            links: [
+                { label: "About us", href: "#" },
+                { label: "Careers", href: "#" },
+                { label: "Legal", href: "#" }
+            ]
+        },
+        {
+            title: "Help",
+            links: [
+                { label: "Help center", href: "#" },
+                { label: "Feedback", href: "#" },
+                { label: "FAQs", href: "#" }
+            ]
+        },
+        {
+            title: "Help",
+            links: [
+                { label: "Help center", href: "#" },
+                { label: "Feedback", href: "#" },
+                { label: "FAQs", href: "#" }
+            ]
+        },
+        {
+            title: "Help",
+            links: [
+                { label: "Help center", href: "#" },
+                { label: "Feedback", href: "#" },
+                { label: "FAQs", href: "#" }
+            ]
+        },
+    ];
+
     return (
-        <div className="w-screen px-5 md:px-24 py-10 text-text_color">
-            <div className="md:flex justify-between">
-                <div>
-                    <div className="flex items-end">
-                        <Link href="#"><h2 className="link text-4xl">Media Match</h2></Link>
-                        <div className="mx-2" />
-                        <p className="text-xs">(1.0.0)</p>
+        <footer className="w-screen bg-background flex flex-col items-center text-white">
+            <div className="flex flex-row flex-wrap gap-16 my-8 lg:my-16 lg:w-full lg:max-w-4xl items-start justify-center">
+                {footerSections.map((section, index) => (
+                    <div key={index} className="min-w-[150px]">
+                        <h4 className="text-lg font-semibold">{section.title}</h4>
+                        <ul className="mt-4">
+                            {section.links.map((link, index) => (
+                                <li key={index} className="mb-2">
+                                    <Link href={link.href} className={linkStyle}>{link.label}</Link>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
-                    <div className="my-2" />
-                    <p className="text-sm">A platform for matching snippets of media content with the actual media.</p>
-                </div>
-                <div className="m-10" />
-                <div className="md:flex">
+                ))}
+            </div>
+            <div className="lg:w-full lg:max-w-4xl text-center">
+                <h2 className="text-4xl md:text-6xl xl:text-8xl 2xl:text-[9.9rem] mb-8">Media Match</h2>
+                <div className="flex flex-col md:flex-row items-center justify-between text-xs md:text-sm mb-2 md:mb-4">
+                    <p>© Media Match</p>
                     <div>
-                        <h2 className={`text-xl`}>Privacy & Policies</h2>
-                        <div className="my-2" />
-                        <p><Link href="#"  className="link">Terms & Conditions</Link></p>
-                        <p><Link href="#"  className="link">Careers</Link></p>
-                    </div>
-                    <div className="m-5" />
-                    <div>
-                        <h2 className={`text-xl`}>Company</h2>
-                        <div className="m-2" />
-                        <p><Link href="#"  className="link">About us</Link></p>
-                        <p><Link href="#"  className="link">Careers</Link></p>
-                        <p><Link href="#"  className="link">FAQs</Link></p>
-                    </div>
-                    <div className="m-5" />
-                    <div>
-                        <h2 className={`text-xl`}>Services</h2>
-                        <div className="my-2" />
-                        <p><Link href="#"  className="link">Courses</Link></p>
-                        <p><Link href="#"  className="link">Part time jobs</Link></p>
-                        <p><Link href="#"  className="link">Accommodation</Link></p>
+                        <ul className="flex gap-4">
+                            <li><Link href="#" className="cursor-pointer">Terms</Link></li>
+                            <li><Link href="#" className="cursor-pointer">Privacy Policy</Link></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div className="my-5" />
-            <div className="rounded-md p-5 bg-[#111111] md:flex justify-between">
-                <div className="flex items-center">
-                    <FaRegCopyright className="text-slate-300"/>
-                    <div className="mx-1" />
-                    <p className="text-sm text-slate-400">2021 Media Match. All rights reserved.</p>
-                </div>
-                <div className="m-5" />
-                <div className="flex items-center text-white">
-                    <button>
-                        <FaSquareXTwitter size={25} className="transition ease-in-out hover:text-sky-500 active:scale-[0.95]" />
-                    </button>
-                    <div className="mx-1" />
-                    <button>
-                        <FaSquareInstagram size={25} className="transition ease-in-out hover:text-sky-500 active:scale-[0.95]" />
-                    </button>
-                    <div className="mx-1" />
-                    <button>
-                        <FaSquareYoutube size={25} className="transition ease-in-out hover:text-sky-500 active:scale-[0.95]" />
-                    </button>
-                    <div className="mx-1" />
-                    <button>
-                        <FaLinkedin size={25} className="transition ease-in-out hover:text-sky-500 active:scale-[0.95]" />
-                    </button>
-                    <div className="mx-1" />
-                </div>
-            </div>
-        </div>
-    )
+        </footer>
+    );
 }

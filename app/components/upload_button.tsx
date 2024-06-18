@@ -1,7 +1,8 @@
+'use client'
 import React, {useEffect, useRef, useState} from 'react';
 import {toast} from 'sonner';
-import Modal from "@/app/components/modal";
-const MediaUpload: React.FC = () => {
+import SuccessModal from "@/app/components/modal";
+export default function UploadButton(){
     // State to store the selected file
     const [file, setFile] = useState<File | null>(null);
 
@@ -25,7 +26,6 @@ const MediaUpload: React.FC = () => {
 
     // Ref to access the file input element
     const inputFileRef = useRef<HTMLInputElement>(null);
-
 
     // useEffect hook to add a keydown event listener on letter B
     useEffect(() => {
@@ -161,7 +161,7 @@ const MediaUpload: React.FC = () => {
     return (
         <>
             <div
-                className="mb-4 drop-shadow-2xl bg-transparent rounded-3xl flex flex-col items-center justify-center"
+                className="my-8 bg-transparent flex flex-col items-center justify-center"
                 onClick={handleCardClick}
                 onDragOver={handleDragOver}
                 onDragLeave={handleDragLeave}
@@ -199,7 +199,7 @@ const MediaUpload: React.FC = () => {
                                 ></div>
                             </div>
                             <button
-                                className="rounded-3xl text-xs bg-red-700 px-4 py-3 btn cta-btn text-center"
+                                className="rounded-lg text-xs bg-red-700 px-12 lg:px-40 py-4 lg:py-4 btn cta-btn text-white font-medium lg:text-2xl"
                                 onClick={handleCancelUpload}
                             >
                                 Cancel Upload
@@ -208,16 +208,15 @@ const MediaUpload: React.FC = () => {
                     </div>
                 ) : (
                     <button
-                        className="cta-btn btn"
+                        className={`btn cta-btn my-4 px-16 lg:px-44 py-3 lg:py-4 bg-primary text-white text-xl font-medium lg:text-2xl rounded-lg`}
                         onClick={() => file && handleSubmit(file)}
                         disabled={loading}
                     >
                         {loading ? 'Uploading...' : 'Upload'}
                     </button>
                 )}
-                <p className="text-xs text-[#7B7B7B]">You can only upload video and audio files</p>
             </div>
-            <Modal
+            <SuccessModal
                 isVisible={modalVisible}
                 onClose={() => {
                     setModalVisible(false);
@@ -227,6 +226,4 @@ const MediaUpload: React.FC = () => {
             />
         </>
     );
-};
-
-export default MediaUpload;
+}

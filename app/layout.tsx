@@ -1,11 +1,11 @@
 import type {Metadata} from "next";
-import {Manrope} from "next/font/google";
+import {Inter} from "next/font/google";
 import "./globals.css";
-import {Footer} from "./components/footer";
 import NavBar from "./components/nav_bar";
 import {Toaster} from "sonner";
+import Footer from "@/app/components/footer";
 
-const manrope = Manrope({subsets: ["latin"]});
+const inter = Inter({subsets: ["latin"]});
 
 export const metadata: Metadata = {
     title: "Media Match",
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-        <body className={manrope.className}>
+        <body className={inter.className}>
         <Toaster position={'top-right'}/>
         <div className="title-bar">
             <NavBar/>
