@@ -36,7 +36,7 @@ export default function About(){
 
     return (
         <>
-            <section className="mt-28 md:mt-40 lg:mt-48 xl:mt-52 overflow-y-hidden">
+            <section className="mt-28 md:mt-40 lg:mt-48 xl:mt-0 xl:h-screen overflow-y-hidden">
                 <h2 ref={element}
                     className="text-left text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold flex flex-wrap">
                     {words.map((word, index) => {
@@ -47,7 +47,7 @@ export default function About(){
                 </h2>
             </section>
 
-            <section className={`mt-28 md:mt-40 lg:mt-48 xl:mt-52 text-center overflow-hidden`}>
+            <section className={`mt-28 md:mt-40 lg:mt-48 xl:mt-0 text-center overflow-hidden`}>
                 <div className={`flex flex-col items-center justify-center`}>
                     <h1 className={`text-center overflow-y-hidden flex items-center justify-center`}>
                         Discover <span className={`mr-3 lg:hidden`}></span>
