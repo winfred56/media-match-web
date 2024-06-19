@@ -41,32 +41,34 @@ export default function HowItWorks() {
                 'files = {\'file\': open(\'path/to/your/media/file\', \'rb\')}\n' +
                 'response = requests.post(url, files=files)\n' +
                 'print(response.json())\n' },
-        { label: 'Javascript', content: 'const axios = require(\'axios\');\n' +
-                'const FormData = require(\'form-data\');\n' +
-                'const fs = require(\'fs\');\n' +
-                '\n' +
-                'const form = new FormData();\n' +
-                'form.append(\'file\', fs.createReadStream(\'path/to/your/media/file\'));\n' +
-                '\n' +
-                'axios.post(\'http://localhost:8000/add_media\', form, {\n' +
-                '  headers: form.getHeaders()\n' +
-                '})\n' +
-                '.then(response => {\n' +
-                '  console.log(response.data);\n' +
-                '})\n' +
-                '.catch(error => {\n' +
-                '  console.error(error);\n' +
-                '});\n' },
-        { label: 'Dart', content: 'import \'dart:io\';\n' +
-                'import \'package:http/http.dart\' as http;\n' +
-                '\n' +
-                'void main() async {\n' +
-                '  var request = http.MultipartRequest(\'POST\', Uri.parse(\'http://localhost:8000/add_media\'));\n' +
-                '  request.files.add(await http.MultipartFile.fromPath(\'file\', \'path/to/your/media/file\'));\n' +
-                '  var response = await request.send();\n' +
-                '  print(await response.stream.bytesToString());\n' +
-                '}\n' },
+        { label: 'Javascript', content: <div>
+                <p>const axios = require(&apos;axios&apos;);</p>
+                <p>const FormData = require(&apos;form-data&apos;);</p>
+                <p>const fs = require(&apos;fs&apos;);</p>
+                <br/>
+                <p>const form = new FormData();</p>
+                <p>form.append(&apos;file&apos;, fs.createReadStream(&apos;path/to/your/media/file&apos;));</p>
+                <p>{"axios.post('http://localhost:8000/add_media', form, {"}</p>
+                <p>{"    headers: form.getHeaders()"}</p>
+                <p>{"    .then(response => {"}</p>
+                <p>{"    console.log(response.data);"}</p>
+                <p>{"   })"}</p>
+                <p>{"    .catch(error => {"}</p>
+                <p>{"     console.error(error);"}</p>
+                <p>{"});"}</p>
+            </div> },
+        { label: 'Dart', content: <div>
+                <p>import &apos;dart:io&apos;;</p>
+                <p>import &apos;package:http/http.dart&apos; as http;</p>
+                <br/>
+                <p>{"void main() async {"}</p>
+                <p>    var request = http.MultipartRequest(&apos;POST&apos;, Uri.parse(&apos;http://localhost:8000/add_media&apos;));</p>
+                <br/>
+                <p>    var response = await request.send();</p>
+                <p>    print(await response.stream.bytesToString());</p>
+            </div> },
     ]
+
     return (
         <>
             <section className="mt-28 md:mt-40 lg:mt-48 xl:mt-52 overflow-y-hidden">
@@ -175,8 +177,7 @@ export default function HowItWorks() {
                         </svg>
                         <h1 className={`text-left`}>API documentation</h1>
                         <div
-                            className={`mt-8 md:mt-12 lg:mt-14 xl:mt-18 w-full flex flex-col gap-y-12 lg:grid lg:grid-cols-2 lg:gap-4`}>
-                            <Tabs tabs={find_tabs}/>
+                            className={`mt-8 md:mt-12 lg:mt-14 xl:mt-18 w-full flex flex-col gap-y-12`}>
                             <div>
                                 <div>
                                     <h2 className={`text-md md:text-lg lg:text:xl`}><code>find</code> Endpoint (GET):
@@ -195,11 +196,12 @@ export default function HowItWorks() {
                                         Error:</code> An error occurred during processing.</p>
                                 </div>
                             </div>
+                            <Tabs tabs={find_tabs}/>
                         </div>
 
                         <div
-                            className={`mt-8 md:mt-12 lg:mt-14 xl:mt-18 w-full flex flex-col-reverse gap-y-12 lg:grid lg:grid-cols-2 lg:gap-4`}>
-                            <div>
+                            className={`mt-8 md:mt-12 lg:mt-14 xl:mt-18 w-full flex flex-col gap-y-12`}>
+                            <div className={`w-full`}>
                                 <h2 className={`text-md md:text-lg lg:text:xl`}><code>add_media</code> Endpoint (GET):</h2>
                                 <p>Uploads a media file, generates fingerprints, and stores them in the database.</p>
                                 <p className={`mt-2`}>URL: <code>/add_media</code></p>
