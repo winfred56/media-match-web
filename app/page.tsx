@@ -11,8 +11,7 @@ export default function Home() {
             <Hero/>
             <About/>
            <HowItWorks />
-
-
+            <div className={`h-screen`}></div>
         </main>
     )
 }

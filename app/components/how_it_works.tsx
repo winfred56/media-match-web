@@ -1,5 +1,6 @@
 'use client'
 import React, {useState} from "react";
+import FingerprintCards from "@/app/components/fingerprint_cards";
 
 export default function HowItWorks() {
     const find_tabs: Tab[] = [
@@ -99,52 +100,53 @@ export default function HowItWorks() {
                 </p>
 
 
-                <div
-                    className={`mt-16 md:mt-20 lg:mt-28 xl:mt-32 w-full flex flex-col gap-y-12 lg:grid lg:grid-cols-2 lg:gap-4`}>
-                    <div className={`p-4 lg:p-8 border rounded-lg`}>
-                        <svg className={`text-primary`} width="24" height="24" viewBox="0 0 24 24" fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 10v4M15 5v14M6 10v4M9 7v10M18 8v8" stroke="currentColor" strokeWidth="2"
-                                  strokeLinecap="round" strokeLinejoin="round"></path>
-                        </svg>
-                        <h2 className={`text-md md:text-lg mt-1`}>Audio fingerprinting</h2>
-                        <p>Audio fingerprinting involves converting an audio signal into a compact digital summary,
-                            known as a fingerprint. These fingerprints can be matched against a database to identify the
-                            audio. </p>
-                        <h2 className={`text-md md:text-lg mt-4 text-primary`}>Processes</h2>
-                        <ul>
-                            <li className={``}>Audio Preprocessing</li>
-                            <li className={`mt-2`}>Spectrogram Generation</li>
-                            <li className={`mt-2`}>Peak Detection</li>
-                            <li className={`mt-2`}>Hash Generation</li>
-                        </ul>
-                    </div>
+                <FingerprintCards/>
+                {/*<div*/}
+                {/*    className={`mt-16 md:mt-20 lg:mt-28 xl:mt-32 w-full flex flex-col gap-y-12 lg:grid lg:grid-cols-2 lg:gap-4`}>*/}
+                {/*    <div className={`p-4 lg:p-8 border rounded-lg`}>*/}
+                {/*        <svg className={`text-primary`} width="24" height="24" viewBox="0 0 24 24" fill="none"*/}
+                {/*             xmlns="http://www.w3.org/2000/svg">*/}
+                {/*            <path d="M12 10v4M15 5v14M6 10v4M9 7v10M18 8v8" stroke="currentColor" strokeWidth="2"*/}
+                {/*                  strokeLinecap="round" strokeLinejoin="round"></path>*/}
+                {/*        </svg>*/}
+                {/*        <h2 className={`text-md md:text-lg mt-1`}>Audio fingerprinting</h2>*/}
+                {/*        <p>Audio fingerprinting involves converting an audio signal into a compact digital summary,*/}
+                {/*            known as a fingerprint. These fingerprints can be matched against a database to identify the*/}
+                {/*            audio. </p>*/}
+                {/*        <h2 className={`text-md md:text-lg mt-4 text-primary`}>Processes</h2>*/}
+                {/*        <ul>*/}
+                {/*            <li className={``}>Audio Preprocessing</li>*/}
+                {/*            <li className={`mt-2`}>Spectrogram Generation</li>*/}
+                {/*            <li className={`mt-2`}>Peak Detection</li>*/}
+                {/*            <li className={`mt-2`}>Hash Generation</li>*/}
+                {/*        </ul>*/}
+                {/*    </div>*/}
 
-                    <div className={`p-4 lg:p-8 border rounded-lg`}>
-                        <svg className={`text-primary`} width="24" height="24" viewBox="0 0 24 24" fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path clipRule="evenodd"
-                                  d="M4 7a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V7z"
-                                  stroke="currentColor" strokeWidth="2" strokeLinecap="round"
-                                  strokeLinejoin="round"></path>
-                            <path clipRule="evenodd" d="M13.5 14L11 15.5v-3l2.5 1.5z" stroke="currentColor"
-                                  strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
-                            <path d="M5 9h14M7 5l2 4M11 5l2 4M15 5l2 4" stroke="currentColor" strokeWidth="2"
-                                  strokeLinecap="round" strokeLinejoin="round"></path>
-                        </svg>
-                        <h2 className={`text-md md:text-lg mt-1`}>Video fingerprinting</h2>
-                        <p>Video fingerprinting is similar but involves extracting unique features from the video
-                            frames.
-                            These features are then stored and can be matched against a database to identify the
-                            video.</p>
-                        <h2 className={`text-md md:text-lg mt-4 text-primary`}>Processes</h2>
-                        <ul>
-                            <li className={``}>Frame Extraction</li>
-                            <li className={`mt-2`}>Feature Extraction</li>
-                            <li className={`mt-2`}>Hash Generation</li>
-                        </ul>
-                    </div>
-                </div>
+                {/*    <div className={`p-4 lg:p-8 border rounded-lg`}>*/}
+                {/*        <svg className={`text-primary`} width="24" height="24" viewBox="0 0 24 24" fill="none"*/}
+                {/*             xmlns="http://www.w3.org/2000/svg">*/}
+                {/*            <path clipRule="evenodd"*/}
+                {/*                  d="M4 7a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V7z"*/}
+                {/*                  stroke="currentColor" strokeWidth="2" strokeLinecap="round"*/}
+                {/*                  strokeLinejoin="round"></path>*/}
+                {/*            <path clipRule="evenodd" d="M13.5 14L11 15.5v-3l2.5 1.5z" stroke="currentColor"*/}
+                {/*                  strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>*/}
+                {/*            <path d="M5 9h14M7 5l2 4M11 5l2 4M15 5l2 4" stroke="currentColor" strokeWidth="2"*/}
+                {/*                  strokeLinecap="round" strokeLinejoin="round"></path>*/}
+                {/*        </svg>*/}
+                {/*        <h2 className={`text-md md:text-lg mt-1`}>Video fingerprinting</h2>*/}
+                {/*        <p>Video fingerprinting is similar but involves extracting unique features from the video*/}
+                {/*            frames.*/}
+                {/*            These features are then stored and can be matched against a database to identify the*/}
+                {/*            video.</p>*/}
+                {/*        <h2 className={`text-md md:text-lg mt-4 text-primary`}>Processes</h2>*/}
+                {/*        <ul>*/}
+                {/*            <li className={``}>Frame Extraction</li>*/}
+                {/*            <li className={`mt-2`}>Feature Extraction</li>*/}
+                {/*            <li className={`mt-2`}>Hash Generation</li>*/}
+                {/*        </ul>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
 
                 <div className={`mt-16 md:mt-20 lg:mt-28 xl:mt-32 w-full`}>
                     <div className={`flex flex-col items-start`}>
