@@ -1,7 +1,6 @@
 import Hero from "@/app/components/hero";
 import About from "@/app/components/about";
 import HowItWorks from "@/app/components/how_it_works";
-import ExampleWrapper from "@/app/components/new_modal";
 
 
 export default function Home() {
@@ -12,7 +11,6 @@ export default function Home() {
             <Hero/>
             <About/>
            <HowItWorks />
-            <ExampleWrapper/>
             <div className={`h-screen`}></div>
         </main>
     )
