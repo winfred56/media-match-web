@@ -222,7 +222,7 @@ export default function UploadButton(){
                     setModalVisible(false);
                     window.location.reload();
                 }}
-                message="Media file uploaded successfully to our database! People can now easily match this file"
+                message="Media file uploaded successfully to our database! People can now easily match this file."
             />
         </>
     );
