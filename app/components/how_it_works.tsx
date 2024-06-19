@@ -198,7 +198,7 @@ export default function HowItWorks() {
                         </div>
 
                         <div
-                            className={`mt-8 md:mt-12 lg:mt-14 xl:mt-18 w-full flex flex-col gap-y-12 lg:grid lg:grid-cols-2 lg:gap-4`}>
+                            className={`mt-8 md:mt-12 lg:mt-14 xl:mt-18 w-full flex flex-col-reverse gap-y-12 lg:grid lg:grid-cols-2 lg:gap-4`}>
                             <div>
                                 <h2 className={`text-md md:text-lg lg:text:xl`}><code>add_media</code> Endpoint (GET):</h2>
                                 <p>Uploads a media file, generates fingerprints, and stores them in the database.</p>
