@@ -72,7 +72,7 @@ export default function HowItWorks() {
 
     return (
         <>
-            <section className="mt-28 md:mt-40 lg:mt-48 xl:mt-52 overflow-y-hidden">
+            <section className="mt-16 md:mt-20 lg:mt-28 xl:mt-32 overflow-y-hidden">
                 <div className="my-8 text-[#9e99a6] text-sm font-medium border rounded-lg px-6 py-3 drop-shadow-2xl">
                     How it works
                 </div>
