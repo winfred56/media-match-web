@@ -21,9 +21,7 @@ export default function RootLayout({
         <html lang="en">
         <body className={inter.className}>
         <Toaster position={'top-right'}/>
-        <div className="title-bar">
-            <NavBar/>
-        </div>
+        <NavBar/>
         <div style={{paddingTop: '50px'}}>
             {children}
         </div>
