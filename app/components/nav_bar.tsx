@@ -33,7 +33,7 @@ const Navbar = () => {
                 window.removeEventListener('scroll', handleScroll);
             };
         }
-    }, [handleScroll, lastScrollY]);
+    }, [lastScrollY]);
 
     return (
         <motion.nav
