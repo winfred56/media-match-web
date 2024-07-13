@@ -2,6 +2,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {toast} from 'sonner';
 import SuccessModal from "@/app/components/modal";
+import {apiEndpoint} from "@/app/components/api_endpoint";
 export default function UploadButton(){
     // State to store the selected file
     const [file, setFile] = useState<File | null>(null);
@@ -77,7 +78,7 @@ export default function UploadButton(){
 
             // Create a new XMLHttpRequest for file upload
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'https://media-match-backend.onrender.com/add/');
+            xhr.open('POST', `${apiEndpoint}/add/`);
 
             // Track the upload progress
             xhr.upload.onprogress = (event) => {

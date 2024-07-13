@@ -7,7 +7,7 @@ export default function Home() {
 
     return (
         <main
-            className={`main flex flex-col items-center pt-14 w-full overflow-x-hidden px-8 lg:px-0`}>
+            className={`main flex flex-col items-center w-full overflow-x-hidden px-8 lg:px-0`}>
             <Hero/>
             <About/>
            <HowItWorks />
@@ -15,3 +15,4 @@ export default function Home() {
         </main>
     )
 }
+

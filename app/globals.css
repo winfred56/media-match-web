@@ -24,7 +24,7 @@ body, main, section {
 }
 
 section {
-  @apply flex flex-col lg:w-full lg:max-w-4xl items-center justify-center;
+  @apply flex flex-col lg:w-full lg:max-w-4xl items-center justify-center overflow-y-hidden;
 }
 
 
