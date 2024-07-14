@@ -88,7 +88,7 @@ export default function About(){
                 </div>
             </section>
 
-            <section className="mt-16 md:mt-20 lg:mt-28 xl:mt-32 overflow-hidden">
+            <section id='tools' className="mt-16 md:mt-20 lg:mt-28 xl:mt-32 overflow-hidden">
                 <div className="my-8 text-[#9e99a6] text-sm font-medium border rounded-lg px-6 py-3 drop-shadow-2xl">
                     🧰 Tools
                 </div>
