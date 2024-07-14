@@ -5,43 +5,55 @@ import FingerprintCards from "@/app/components/fingerprint_cards";
 export default function HowItWorks() {
     const find_tabs: Tab[] = [
         { label: 'cUrl', content: 'curl -X GET http://localhost:8000/find -F "file=@path/to/your/media/file"' },
-  { label: 'Python', content: 'import requests\n' +
-          '\n' +
-          'url = \'http://localhost:8000/find\'\n' +
-          'files = {\'file\': open(\'path/to/your/media/file\', \'rb\')}\n' +
-          'response = requests.get(url, files=files)\n' +
-          'print(response.json())\n' },
-  { label: 'Javascript', content: 'const axios = require(\'axios\');\n' +
-          'const FormData = require(\'form-data\');\n' +
-          'const fs = require(\'fs\');\n' +
-          '\n' +
-          'const form = new FormData();\n' +
-          'form.append(\'file\', fs.createReadStream(\'path/to/your/media/file\'));\n' +
-          '\n' +
-          'axios.get(\'http://localhost:8000/find\', {\n' +
-          '  headers: form.getHeaders(),\n' +
-          '  data: form\n' +
-          '})\n' +
-          '.then(response => {\n' +
-          '  console.log(response.data);\n' +
-          '})\n' +
-          '.catch(error => {\n' +
-          '  console.error(error);\n' +
-          '});\n' },
-  { label: 'Dart', content: 'import \'dart:io\';\n' +
-          'import \'package:http/http.dart\' as http;\n' +
-          '\n' +
-          'void main() async {\n' +
-          '  var request = http.MultipartRequest(\'GET\', Uri.parse(\'http://localhost:8000/find\'));\n' },
+  { label: 'Python', content: <div>
+          <p>import requests</p>
+          <br/>
+          <p>url = &apos;http://localhost:8000/find&apos;</p>
+          <p>files = &apos;file&apos;: open(&apos;path/to/your/media/file&apos;, &apos;rb&apos;)</p>
+          <p>response = requests.get(url, files=files)</p>
+          <br/>
+          <p>print(response.json())</p>
+      </div> },
+  { label: 'Javascript', content: <div>
+          <p>const axios = require(&apos;axios&apos;);</p>
+          <p>const FormData = require(&apos;form-data&apos;);</p>
+          <p>const fs = require(&apos;fs&apos;);</p>
+          <br/>
+          <p>const form = new FormData();</p>
+          <p>form.append(&apos;file&apos;, fs.createReadStream(&apos;path/to/your/media/file&apos;));</p>
+          <p>{"axios.post('http://localhost:8000/find', form, {"}</p>
+          <p>{"    headers: form.getHeaders()"}</p>
+          <p>{"    .then(response => {"}</p>
+          <p>{"    console.log(response.data);"}</p>
+          <p>{"   })"}</p>
+          <p>{"    .catch(error => {"}</p>
+          <p>{"     console.error(error);"}</p>
+          <p>{"});"}</p>
+      </div> },
+  { label: 'Dart', content: <div>
+          <p>import &apos;dart:io&apos;;</p>
+          <p>import &apos;package:http/http.dart&apos; as http;</p>
+          <br/>
+          <p>{"void main() async {"}</p>
+          <p>    var request = http.MultipartRequest(&apos;GET&apos;, Uri.parse(&apos;http://localhost:8000/find&apos;));</p>
+          <br/>
+          <p>    var response = await request.send();</p>
+          <p>    print(await response.stream.bytesToString());</p>
+          <p>{'}'}</p>
+      </div> },
 ];
     const add_tabs: Tab[] = [
         { label: 'cUrl', content: 'curl -X POST http://localhost:8000/add_media -F "file=@path/to/your/media/file"\n' },
-        { label: 'Python', content: 'import requests\n' +
-                '\n' +
-                'url = \'http://localhost:8000/add_media\'\n' +
-                'files = {\'file\': open(\'path/to/your/media/file\', \'rb\')}\n' +
-                'response = requests.post(url, files=files)\n' +
-                'print(response.json())\n' },
+        {label: 'Python', content:
+                <div>
+                    <p>import requests</p>
+                    <br/>
+                    <p>url = &apos;http://localhost:8000/add&apos;</p>
+                    <p>files = &apos;file&apos;: open(&apos;path/to/your/media/file&apos;, &apos;rb&apos;)</p>
+                    <p>response = requests.get(url, files=files)</p>
+                    <p>print(response.json())</p>
+                </div>
+        },
         { label: 'Javascript', content: <div>
                 <p>const axios = require(&apos;axios&apos;);</p>
                 <p>const FormData = require(&apos;form-data&apos;);</p>
@@ -49,7 +61,7 @@ export default function HowItWorks() {
                 <br/>
                 <p>const form = new FormData();</p>
                 <p>form.append(&apos;file&apos;, fs.createReadStream(&apos;path/to/your/media/file&apos;));</p>
-                <p>{"axios.post('http://localhost:8000/add_media', form, {"}</p>
+                <p>{"axios.post('http://localhost:8000/add', form, {"}</p>
                 <p>{"    headers: form.getHeaders()"}</p>
                 <p>{"    .then(response => {"}</p>
                 <p>{"    console.log(response.data);"}</p>
@@ -63,16 +75,17 @@ export default function HowItWorks() {
                 <p>import &apos;package:http/http.dart&apos; as http;</p>
                 <br/>
                 <p>{"void main() async {"}</p>
-                <p>    var request = http.MultipartRequest(&apos;POST&apos;, Uri.parse(&apos;http://localhost:8000/add_media&apos;));</p>
+                <p>    var request = http.MultipartRequest(&apos;POST&apos;, Uri.parse(&apos;http://localhost:8000/add&apos;));</p>
                 <br/>
                 <p>    var response = await request.send();</p>
                 <p>    print(await response.stream.bytesToString());</p>
+                <p>{'}'}</p>
             </div> },
     ]
 
     return (
         <>
-            <section className="mt-16 md:mt-20 lg:mt-28 xl:mt-32 overflow-y-hidden">
+            <section id='how-it-works' className="mt-16 md:mt-20 lg:mt-28 xl:mt-32 overflow-y-hidden">
                 <div className="my-8 text-[#9e99a6] text-sm font-medium border rounded-lg px-6 py-3 drop-shadow-2xl">
                     How it works
                 </div>
@@ -102,7 +115,7 @@ export default function HowItWorks() {
 
                 <FingerprintCards/>
 
-                <div className={`mt-16 md:mt-20 lg:mt-28 xl:mt-32 w-full`}>
+                <div id='api-documentation' className={`mt-16 md:mt-20 lg:mt-28 xl:mt-32 w-full`}>
                     <div className={`flex flex-col items-start`}>
                         <svg className={`text-primary w-14 md:w-16 lg:w-20 xl:w-32`} viewBox="0 0 232 232" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
