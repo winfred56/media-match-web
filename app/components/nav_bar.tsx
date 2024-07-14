@@ -5,9 +5,9 @@ import Link from "next/link";
 
 const Navbar = () => {
     const links = [
-        { "link_name": "Upload media", "href": "#" },
-        { "link_name": "Download app", "href": "#" },
-        { "link_name": "Tools & API", "href": "#" },
+        { "link_name": "Analytics", "href": "/analytics" },
+        { "link_name": "API Documentation", "href": "#api-documentation" },
+        { "link_name": "Tools", "href": "#tools" },
         { "link_name": "Pricing", "href": "#" },
     ];
 
