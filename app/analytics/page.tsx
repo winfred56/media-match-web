@@ -1,5 +1,6 @@
 import {MdDownload} from "react-icons/md";
-import Analytics_cards from "@/app/components/analytics_cards";
+import Link from "next/link";
+import AnalyticsDashboard from "@/app/components/analytics_cards";
 
 export default function Page(){
     return (
@@ -9,7 +10,7 @@ export default function Page(){
                 <h2 className={`text-xl md:text-2xl lg:text-3xl xl:text-5xl`}>Reports</h2>
                 <div className={`flex gap-2 items-center justify-center`}>
                    <MdDownload/>
-                    <p className={``}>Download</p>
+                    <p className={``}><Link href=''>Download</Link></p>
                 </div>
             </div>
             <section>
