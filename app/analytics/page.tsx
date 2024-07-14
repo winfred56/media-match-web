@@ -15,15 +15,10 @@ export default function Page(){
             <section>
                 <div className={`flex flex-col items-center justify-center`}>
                     <div>
-                        <Analytics_cards/>
-                    </div>
-                    <div>
-                        graph
+                        <AnalyticsDashboard/>
                     </div>
                 </div>
             </section>
-
-            <div className={`h-screen`}></div>
         </main>
     );
 }
