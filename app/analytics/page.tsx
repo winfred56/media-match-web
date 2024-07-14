@@ -1,6 +1,6 @@
 import {MdDownload} from "react-icons/md";
 import Link from "next/link";
-import AnalyticsDashboard from "@/app/components/analytics_cards";
+import AnalyticsDashboard from "@/app/components/analytics";
 
 export default function Page(){
     return (
