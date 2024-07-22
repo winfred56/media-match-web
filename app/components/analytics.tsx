@@ -9,7 +9,7 @@ interface TopMatchedItem {
     id: number;
     file_name: string;
     source: string;
-    duration_seconds: number;
+    match_count: number;
 }
 
 interface AnalyticsCards {
@@ -115,7 +115,7 @@ const AnalyticsDashboard: React.FC = () => {
                         </div>
                         <div className='flex flex-col items-start justify-start'>
                             <p>{item.file_name}</p>
-                            <p className='text-sm text-gray-500'>{item.duration_seconds} seconds</p>
+                            <p className='text-sm text-gray-500'>Matched {item.match_count}x</p>
                         </div>
                     </div>
                 ))}
