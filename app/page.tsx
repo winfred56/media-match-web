@@ -11,7 +11,7 @@ export default function Home() {
             <Hero/>
             <About/>
            <HowItWorks />
-            <div className={`h-screen`}></div>
+            <div className={`h-36`}></div>
         </main>
     )
 }

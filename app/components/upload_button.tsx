@@ -32,7 +32,7 @@ export default function UploadButton(){
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             // Check if the 'B' key is pressed
-            if (event.key.toLowerCase() === 'b') {
+            if (event.key.toLowerCase() === 'u') {
                 // Simulate a click on the file input element
                 inputFileRef.current?.click();
             }

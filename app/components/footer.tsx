@@ -93,7 +93,7 @@ export default function Footer(){
                 ))}
             </div>
             <div className="lg:w-full lg:max-w-4xl text-center">
-                <h2 className="text-4xl md:text-6xl xl:text-8xl 2xl:text-[9.9rem] mb-8">Media Match</h2>
+                <h2 className="text-4xl md:text-6xl xl:text-8xl 2xl:text-[9.9rem] mb-8"><Link href='#'>Media Match</Link></h2>
                 <div className="flex flex-col md:flex-row items-center justify-between text-xs md:text-sm mb-2 md:mb-4">
                     <p>© Media Match</p>
                     <div>

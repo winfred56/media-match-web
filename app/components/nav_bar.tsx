@@ -44,7 +44,7 @@ const Navbar = () => {
         >
             <div className={`flex items-center justify-between`}>
                 <div>
-                    Media Match
+                    <Link href='#'>Media Match</Link>
                 </div>
                 <div>
                     <ul className={`hidden lg:flex flex-row gap-6 items-center font-medium`}>
@@ -56,7 +56,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className={`p-4 border rounded-lg hidden md:block`}>
-                    Press <span className={`bg-media_grey font-bold p-2 rounded-md`}>B</span> to upload
+                    Press <span className={`bg-media_grey font-bold p-2 rounded-md`}>U</span> to upload
                 </div>
             </div>
         </motion.nav>
